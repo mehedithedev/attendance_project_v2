@@ -1,0 +1,1 @@
+mongodb+srv://mehedideveloper:<db_password>@cluster0.ex2dz.mongodb.net/
