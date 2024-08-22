@@ -23,6 +23,9 @@ app.use((err, res, req, next) =>{
     next();
 });
 
+
+
+
 //Start server
 app.listen(PORT, () =>{
     console.log(`Connected to port ${PORT}`);
