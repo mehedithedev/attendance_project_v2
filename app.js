@@ -5,6 +5,7 @@ require('dotenv').config();
 const authRoutes = require('./routes/authRoutes.js');
 const studentRoutes = require('./routes/studentRoutes.js');
 const PORT = process.env.PORT || 3000;
+const bodyParser = require('body-parser')
 
 
 //Connect to MongoDB
@@ -18,6 +19,8 @@ app.set('views', './views');
 
 //Middlewares
 app.use(express.static('public'));
+app.use(express.json())
+app.use(bodyParser.urlencoded({extended: true}))
 app.use('/', authRoutes);
 app.use('/', studentRoutes);
 
