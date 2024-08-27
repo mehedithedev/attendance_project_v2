@@ -21,8 +21,14 @@ exports.login = async (req,res)=> {
 
         // Generate the JWT
         const token = jwt.sign({
-            id: user._id.toString() // why _id
-        })
+            id: user._id.toString(), // why _id
+        },
+        'secret_key',
+        {expiresIn: '5m'}        
+    );
+        // Create a cookie and place JWT/token inside it
+    
+    res.cookie('jwt', token, {maxAge: 5*60*1000, http: true});
 
     } catch(error){
         res.status(500).send(`Internal Server Error`);

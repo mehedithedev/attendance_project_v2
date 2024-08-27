@@ -24,12 +24,10 @@ app.use(bodyParser.urlencoded({extended: true}))
 app.use('/', authRoutes);
 app.use('/', studentRoutes);
 
-app.use((err, res, req, next) =>{
+app.use((err, req, res, next) => {
     console.error(err.stack);
     res.status(500).send('Internal Server Error');
-    next();
 });
-
 
 
 //Start server

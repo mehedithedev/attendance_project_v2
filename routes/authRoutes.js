@@ -12,7 +12,10 @@ router.get('/register', (req, res) =>{
 });
 
 // controller actions
-router.post('/register', authController.register)
+router.post('/login', authController.login);
+router.post('/register', authController.register);
+
+
 
 
 
