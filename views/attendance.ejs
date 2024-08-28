@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="/css/form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer">
     <style>
-        /* Ensure canvas handles overflow and fits properly */
-        canvas, #attendanceChart {
-            width: 100% !important; /* Ensure the canvas resizes correctly */
-            height: 500px !important; /* Set a fixed height */
-            display: block; /* Prevent extra space below the canvas */
+        #attendanceChart {
+            display:block !important;
+            width: 100% !important; 
+            height: 500px !important; 
+          
         }
     </style>
 </head>
@@ -26,7 +26,7 @@
 </header>
 
 <section>
-   <canvas id="attendanceChart"></canvas> 
+   <div id="canvasContainer"><canvas id="attendanceChart"></canvas></div>
 
     <form id="attendForm" action="/updatestudent" method="POST">
         <table id="table">
