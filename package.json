@@ -16,11 +16,7 @@
     "ejs": "^3.1.10",
     "express": "^4.19.2",
     "jsonwebtoken": "^9.0.2",
-<<<<<<< HEAD
     "mongoose": "^8.5.3",
     "nodemon": "^3.1.4"
-=======
-    "mongoose": "^8.5.3"
->>>>>>> 8b953f7a5bd3f3514fe6026a61cc1a84a3cb1168
   }
 }
