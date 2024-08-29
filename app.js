@@ -7,15 +7,15 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const authRoutes = require('./routes/authRoutes.js');
 const studentRoutes = require('./routes/studentRoutes.js');
+const initializeDatabse = require('./data/initializeDatabase.js');
 const PORT = process.env.PORT || 3000;
-
 
 
 
 // Swagger Documentation
 const swaggerDocument = YAML.load('./swagger.yaml');
 
-app.use('/api/docs', swaggerUI,serve, swaggerUI.setup(swaggerDocument));
+app.use('/api/docs', swaggerUI.serve, swaggerUI.setup(swaggerDocument));
 
 
 
@@ -24,7 +24,10 @@ app.use('/api/docs', swaggerUI,serve, swaggerUI.setup(swaggerDocument));
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGO_URI)
-    .then(() => { console.log('Connected to MongoDB Database') })
+    .then(async () => { 
+        console.log('Connected to MongoDB Database')
+        await initializeDatabse();
+    })
     .catch((err) => { console.log(`Error connecting to database: ${err}`) });
 
 // View engines
