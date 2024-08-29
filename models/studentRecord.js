@@ -1,18 +1,19 @@
-const mongoose = require('mongoose')
+const mongoose = require('mongoose');
 
-
-const attendenceSchema = new mongoose.Schema({
+const attendanceSchema = new mongoose.Schema({
     date: {
         type: Date,
         required: true,
     },
-    status:{
+    status: {
         type: String,
-        enum: ['present', 'absent']
-    }
-})
+        enum: ['present', 'absent'],
+        required: true,
+    },
+});
+
 const studentRecordSchema = new mongoose.Schema({
-    name:{
+    name: {
         type: String,
         required: true,
     },
@@ -21,13 +22,11 @@ const studentRecordSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
-    attendance:{
-         type: [attendenceSchema],
-         default: [],
-    }
-})
-
-
+    attendance: {
+        type: [attendanceSchema],
+        default: [],
+    },
+});
 
 const StudentRecord = mongoose.model('StudentRecord', studentRecordSchema);
 

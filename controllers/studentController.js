@@ -38,15 +38,41 @@ exports.deleteStudent = async (req, res)=>{
 
     } catch (error) {
         console.log('Error adding student');
-        res.status(500).send('Internal Server Error');
+        res.status(500).send('Internal Server Error'); 
     }
 }
 
 exports.updateStudent = async (req, res)=>{
-    try {
-        const {attendanceDate} = req.body;x
+    const {attendanceDate} = req.body;
+    const length = req.body.attendance ? req.body.attendance.length : 0;
 
-    } catch (error) {
+    console.log(req.body);
+
+    try {
+        for(let i = 0 ; i < length; i++){
+            const studentId  = req.body.attendance[i];
+            await StudentRecord.findByIdAndUpdate(
+                studentId, 
+                {
+                    $inc:{
+                        attendanceCount : 1
+                    },
+                    $push:{
+                        attendance:{ 
+                            date: new Date(attendanceDate),
+                            status: 'present'
+
+                        }
+                    }
+                }
+            )
+
+        }
+    res.redirect('/home');
+
+    } 
+    
+    catch (error) {
         console.log('Error adding student');
         res.status(500).send('Internal Server Error');
     }
